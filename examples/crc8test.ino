@@ -19,9 +19,9 @@ void loop() {
 
   // generate the checksum
   int str_len = str.length() + 1; // calculate length of message (with one extra character for the null terminator)
-  unsigned char char_array[str_len]; // prepare a character array (the buffer)
+  char char_array[str_len]; // prepare a character array (the buffer)
   str.toCharArray(char_array, str_len); // copy it over
-  checksum = crc8.get_crc8(char_array, str_len);
+  checksum = crc8.get_crc8((const uint8_t*)  char_array, str_len);
 
   //combine message and checksum with separating character
   String checksum_str = String(checksum);
